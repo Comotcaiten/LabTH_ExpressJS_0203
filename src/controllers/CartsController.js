@@ -1,6 +1,7 @@
 var Products = require('../models/ProductsModel');
 
 class CartsController {
+    // POST /cart/add/:id
     async AddProducts(req, res) {
         try {
             const product = await Products.findById(req.params.id);
@@ -33,6 +34,7 @@ class CartsController {
         }
     }
 
+    // POST /cart/delete/:id
     async Delete (req, res) {
         const cartItems = req.cookies.cart ? JSON.parse(req.cookies.cart) : [];
         for(let product of cartItems) {
@@ -46,6 +48,7 @@ class CartsController {
         res.redirect('/cart')
     }
 
+    // GET /cart
     async GetCarts(req, res) {
         const cartItems = req.cookies.cart ? JSON.parse(req.cookies.cart) : [];
         let total_price = 0;

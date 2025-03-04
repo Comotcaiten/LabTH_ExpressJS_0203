@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 class CategoriesController {
 
-    // Get
+    // API Get /api/categories
     async GetCategories(req, res) {
         try {
             var categoties = await Categories.find({});
@@ -14,7 +14,7 @@ class CategoriesController {
         }
     }
 
-    // Post
+    // API Post /api/categories/add
     async AddCatagory(req, res) {
         try {
             var { name, parent_category_id } = req.body;
@@ -40,7 +40,7 @@ class CategoriesController {
         }
     }
 
-    // Put
+    // API Put /api/categories/update/:id
     async UpdateCategory(req, res) {
         try {
             var { name, parent_category_id } = req.body;
@@ -69,7 +69,7 @@ class CategoriesController {
         }
     }
 
-    // Delete
+    // API Delete /api/categories/delete/:id
     async DeleteCategory(req, res) {
         try {
             var category = await Categories.findById(req.params.id);

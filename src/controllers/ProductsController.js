@@ -3,6 +3,7 @@ var Categories = require('../models/CategoriesModel');
 var mongoose = require('mongoose');
 
 class ProductsController {
+    // API GET /api/products
     async GetProducts(req, res) {
         try {
             var products = await Products.find({});
@@ -12,10 +13,11 @@ class ProductsController {
         }
     }
 
+    // API POST /api/products/add
     async AddProducts(req, res) {
         try {
             const { name, price, categories_id, images, description } = req.body;
-            console.log(name, price, categories_id, images);
+            // console.log(name, price, categories_id, images);
 
             if (!name || !price || !categories_id || !images || !description) {
                 return res.status(400).json({ message: "Missing required fields" });
@@ -42,6 +44,7 @@ class ProductsController {
         }
     }
 
+    // API PUT /api/products/update/:id
     async UpdateProducts(req, res) {
         try {
             var product = await Products.findById(req.params.id);
@@ -59,6 +62,7 @@ class ProductsController {
         }
     }
 
+    // API DELETE /api/products/delete/:id
     async DeleteProducts(req, res) {
         try {
             var product = await Products.findById(req.params.id);
@@ -71,6 +75,7 @@ class ProductsController {
         }
     }
 
+    // GET /products
     async ViewListOfProduct(req, res) {
         var products
         var data = { products: {}, message: ""};
@@ -86,9 +91,10 @@ class ProductsController {
         return res.render('products_list', data);
     }
 
+    // GET /products/detail/:id
     async ViewDetailOfProduct(req, res) {
         var data = { product: {}, message: "", get: false};
-        console.log("req.params.id: ", req.params.id);
+        // console.log("req.params.id: ", req.params.id);
         try {
             var product = await Products.findOne({_id: req.params.id}).populate('categories_id');
             if (!product) {
@@ -106,7 +112,7 @@ class ProductsController {
             data.product = {};
             data.get = false;
         }
-        console.log("data: ", data);
+        // console.log("data: ", data);
         return res.render('product_detail', data);
     }
 }
