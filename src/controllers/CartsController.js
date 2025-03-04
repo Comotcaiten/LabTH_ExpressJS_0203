@@ -1,5 +1,6 @@
 var Products = require('../models/ProductsModel');
 
+//  Giỏ hàng được quản lý bằng cookie
 class CartsController {
     // POST /cart/add/:id
     async AddProducts(req, res) {
