@@ -1,0 +1,24 @@
+{
+  "name": "website_th5",
+  "version": "1.0.0",
+  "description": "Website Thuc hanh 5",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Comotcaiten/LabTH_ExpressJS_0203.git"
+  },
+  "author": "2274802010690_PhamThanhPhuc",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "mongoose": "^8.11.0",
+    "nodemon": "^3.1.9",
+    "website_th5": "file:"
+  }
+}
